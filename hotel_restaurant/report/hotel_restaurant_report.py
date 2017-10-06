@@ -1,24 +1,5 @@
 # -*- coding: utf-8 -*-
-# --------------------------------------------------------------------------
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2012-Today Serpent Consulting Services PVT. LTD.
-#    (<http://www.serpentcs.com>)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>
-#
-# ---------------------------------------------------------------------------
+# See LICENSE file for full copyright and licensing details.
 
 import time
 from datetime import datetime
@@ -52,8 +33,8 @@ class HotelRestaurantReport(models.AbstractModel):
                                                                 []))
         date_start = data.get('date_start', fields.Date.today())
         date_end = data['form'].get('date_end', str(datetime.now() +
-                                    relativedelta(months=+1,
-                                                  day=1, days=-1))[:10])
+                                    relativedelta(months=1,
+                                                  day=1, days=1))[:10])
         rm_act = self.with_context(data['form'].get('used_context', {}))
         reservation_res = rm_act.get_res_data(date_start, date_end)
         docargs = {
@@ -149,8 +130,8 @@ class FolioRestReport(models.AbstractModel):
                                                                 []))
         date_start = data['form'].get('date_start', fields.Date.today())
         date_end = data['form'].get('date_end', str(datetime.now() +
-                                    relativedelta(months=+1,
-                                                  day=1, days=-1))[:10])
+                                    relativedelta(months=1,
+                                                  day=1, days=1))[:10])
         rm_act = self.with_context(data['form'].get('used_context', {}))
         get_data_res = rm_act.get_data(date_start, date_end)
         get_rest_res = rm_act.get_rest(date_start, date_end)
@@ -236,8 +217,8 @@ class FolioReservReport(models.AbstractModel):
                                                                 []))
         date_start = data.get('date_start', fields.Date.today())
         date_end = data['form'].get('date_end', str(datetime.now() +
-                                    relativedelta(months=+1,
-                                                  day=1, days=-1))[:10])
+                                    relativedelta(months=1,
+                                                  day=1, days=1))[:10])
         rm_act = self.with_context(data['form'].get('used_context', {}))
         get_data_res = rm_act.get_data(date_start, date_end)
         get_reserv_res = rm_act.get_reserv(date_start, date_end)

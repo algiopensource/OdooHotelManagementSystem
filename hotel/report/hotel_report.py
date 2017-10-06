@@ -1,27 +1,9 @@
 # -*- coding: utf-8 -*-
-# --------------------------------------------------------------------------
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2012-Today Serpent Consulting Services PVT. LTD.
-#    (<http://www.serpentcs.com>)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>
-#
-# ---------------------------------------------------------------------------
+# See LICENSE file for full copyright and licensing details.
 
 import time
 from datetime import datetime
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from dateutil.relativedelta import relativedelta
 from dateutil import parser
 from odoo import api, fields, models
@@ -41,9 +23,9 @@ class FolioReport(models.AbstractModel):
             data_folio.append({'name': data.name,
                                'partner': data.partner_id.name,
                                'checkin': parser.parse(data.checkin_date).
-                               strftime('%m/%d/%Y %H:%M:%S'),
-                               'checkout': parser.parse(data.checkin_date).
-                               strftime('%m/%d/%Y %H:%M:%S'),
+                               strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                               'checkout': parser.parse(data.checkout_date).
+                               strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                                'amount': data.amount_total})
             total_amount += data.amount_total
         data_folio.append({'total_amount': total_amount})
